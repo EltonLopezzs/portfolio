@@ -21,5 +21,8 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
+      - name: Rodar o build
+        run: CI=false npm run build  # Adicionei a flag CI=false para ignorar warnings
+
       - name: Rodar o deploy
         run: npm run deploy
