@@ -1,4 +1,4 @@
-name: Deploy Site
+name: Build Site
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main  
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,4 @@ jobs:
         run: npm install
 
       - name: Rodar o build
-        run: CI=false npm run build  # Adicionei a flag CI=false para ignorar warnings
-
-      - name: Rodar o deploy
-        run: npm run deploy
+        run: CI=false npm run build  # Adicionando CI=false para ignorar warnings
