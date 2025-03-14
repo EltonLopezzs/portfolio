@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Usamos o Ubuntu como ambiente de execução
+    runs-on: ubuntu-latest
 
     steps:
       - name: Clonar o repositório
@@ -16,10 +16,13 @@ jobs:
       - name: Instalar Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # Aqui você instala a versão do Node.js que seu projeto utiliza
+          node-version: 18  
 
       - name: Instalar dependências
-        run: npm install  # Instalando as dependências do seu projeto
+        run: npm install
+
+      - name: Rodar o build (com CI=false)
+        run: CI=false npm run build  # Desabilita warnings sendo tratados como erros
 
       - name: Rodar o deploy
-        run: npm run deploy  # Executando o comando npm run deploy
+        run: npm run deploy
