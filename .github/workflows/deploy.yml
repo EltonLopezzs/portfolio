@@ -1,4 +1,4 @@
-name: Build Site
+name: Deploy Site
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - main  
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest  # Usamos o Ubuntu como ambiente de execução
 
     steps:
       - name: Clonar o repositório
@@ -16,10 +16,10 @@ jobs:
       - name: Instalar Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  
+          node-version: 18  # Aqui você instala a versão do Node.js que seu projeto utiliza
 
       - name: Instalar dependências
-        run: npm install
+        run: npm install  # Instalando as dependências do seu projeto
 
-      - name: Rodar o build
-        run: CI=false npm run build  # Adicionando CI=false para ignorar warnings
+      - name: Rodar o deploy
+        run: npm run deploy  # Executando o comando npm run deploy
